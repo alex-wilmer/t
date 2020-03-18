@@ -13,6 +13,8 @@ const CONFIG_URL = `https://api.simplewebrtc.com/config/guest/${API_KEY}`;
 
 const store = SWRTC.createStore();
 
+window.store = store
+
 render(<Provider store={store}>
   <SWRTC.Provider configUrl={CONFIG_URL}>
     {/* Render based on the connection state */}
@@ -31,7 +33,21 @@ render(<Provider store={store}>
       {/* Connect to a room with a name and optional password */}
       <SWRTC.Room name={ROOM_NAME} password={ROOM_PASSWORD}>
         {props => {
-          return 'number of peers is ' + props.peers.length
+          let { media } = store.getState().simplewebrtc
+          {/* console.log(123, media) */ }
+          return (
+            <>
+
+              'number of peers is '  {props.peers.length}
+              {Object.values(media)
+                .filter(val => val.kind === 'video')
+                .map(val => <SWRTC.Video key={val.id} media={media[val.id]} />)
+              }
+            </>
+          )
+
+
+
         }}
       </SWRTC.Room>
     </SWRTC.Connected>
