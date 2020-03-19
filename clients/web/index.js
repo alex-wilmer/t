@@ -5,11 +5,19 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import Pusher from 'pusher-js'
 import { Splash } from './views/Splash';
 import { Dashboard } from './views/Dashboard';
 import { Profile } from './views/Profile';
 import { Rooms } from './views/Rooms';
 import { Room } from './views/Room'
+
+window.pusher = new Pusher('21013063be02226d4848', {
+  cluster: 'us2',
+  forceTLS: true
+});
+
+window.channel = pusher.subscribe('channel');
 
 function App() {
   return (

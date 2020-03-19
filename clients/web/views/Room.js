@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import * as SWRTC from '@andyet/simplewebrtc';
 
-
 export const Room = () => {
   let { room } = useParams()
 
@@ -12,11 +11,10 @@ export const Room = () => {
         You are in room {room}
       </div>
       <SWRTC.Connecting>
-        <h1>Connecting...</h1>
+        <div>Connecting...</div>
       </SWRTC.Connecting>
 
       <SWRTC.Connected>
-        <h1>Connected!</h1>
         <SWRTC.RequestUserMedia audio video auto />
         <SWRTC.RemoteAudioPlayer />
 
@@ -27,13 +25,19 @@ export const Room = () => {
 
 
             return (
-              <>
-                number of peers is {props?.peers.length}
+              <div>
+                <div>number of peers is {props?.peers.length}</div>
+
+
+
+
+
+
                 {Object.values(media)
                   .filter(val => val.kind === 'video')
                   .map(val => <SWRTC.Video key={val.id} media={media[val.id]} />)
                 }
-              </>
+              </div>
             )
           }}
         </SWRTC.Room>

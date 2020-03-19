@@ -6,6 +6,7 @@
   "version": "0.1.0",
   "author": "Alex Wilmer <djazium@gmail.com>",
   "scripts": {
+    "start:socket": "yarn workspace @rally/socket start",
     "start:web": "parcel clients/web/index.html",
     "build:web": "parcel build clients/web/index.html"
   },
