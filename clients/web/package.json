@@ -7,6 +7,11 @@
     "@andyet/simplewebrtc": "^1.16.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-redux": "^7.2.0"
+    "react-redux": "^7.2.0",
+    "react-router": "^6.0.0-alpha.2",
+    "react-router-dom": "^6.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7"
   }
 }
